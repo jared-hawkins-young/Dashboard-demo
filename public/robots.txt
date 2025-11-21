@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /app/
+Disallow: /auth/callback
+
+# Lost Star Technology AI Voice Agent Platform
+Sitemap: https://voiceagent.com/sitemap.xml

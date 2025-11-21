@@ -1,0 +1,47 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Allow ElevenLabs widget and all its dependencies
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+        https://unpkg.com 
+        https://cdn.jsdelivr.net 
+        https://*.elevenlabs.io 
+        https://*.elevenlabs.com 
+        blob: 
+        data:;
+      connect-src 'self' 
+        https://*.elevenlabs.io 
+        https://*.elevenlabs.com 
+        wss://*.elevenlabs.io 
+        wss://*.elevenlabs.com
+        wss://api.us.elevenlabs.io;
+      style-src 'self' 'unsafe-inline' 
+        https://*.elevenlabs.io 
+        https://*.elevenlabs.com;
+      img-src 'self' data: https: 
+        https://*.elevenlabs.io 
+        https://*.elevenlabs.com;
+      font-src 'self' https: data:;
+      frame-src 'self' 
+        https://*.elevenlabs.io 
+        https://*.elevenlabs.com;
+      worker-src 'self' blob: data:;
+      child-src 'self' blob: data:;
+      media-src 'self' blob: data: 
+        https://*.elevenlabs.io 
+        https://*.elevenlabs.com;
+    """
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
