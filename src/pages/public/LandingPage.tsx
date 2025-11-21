@@ -80,14 +80,15 @@ export default function LandingPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button size="lg" className="text-lg px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
-              <Link to="/book">
-                Book Your IV Today
+              <Link to="/auth/signup-email">
+                Get Started Free
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-border">
-              <Phone className="mr-2 h-5 w-5" />
-              Call (704) IV-DRIPS
+            <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-border" asChild>
+              <Link to="/auth/signin">
+                Sign In
+              </Link>
             </Button>
           </div>
 
@@ -251,7 +252,7 @@ export default function LandingPage() {
                   </ul>
                 </div>
                 <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
-                  <Link to="/book">Book Hydration IV</Link>
+                  <Link to="/auth/signup-email">Get Started</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -278,7 +279,7 @@ export default function LandingPage() {
                   </ul>
                 </div>
                 <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
-                  <Link to="/book">Schedule Myers IV</Link>
+                  <Link to="/auth/signup-email">Get Started</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -305,7 +306,7 @@ export default function LandingPage() {
                   </ul>
                 </div>
                 <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
-                  <Link to="/book">Book Immunity IV</Link>
+                  <Link to="/auth/signup-email">Get Started</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -332,7 +333,7 @@ export default function LandingPage() {
                   </ul>
                 </div>
                 <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
-                  <Link to="/book">Book Hangover Rescue</Link>
+                  <Link to="/auth/signup-email">Get Started</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -359,7 +360,7 @@ export default function LandingPage() {
                   </ul>
                 </div>
                 <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
-                  <Link to="/book">Book NAD+ IV</Link>
+                  <Link to="/auth/signup-email">Get Started</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -386,7 +387,7 @@ export default function LandingPage() {
                   </ul>
                 </div>
                 <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
-                  <Link to="/book">Book Beauty Glow IV</Link>
+                  <Link to="/auth/signup-email">Get Started</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -394,7 +395,7 @@ export default function LandingPage() {
 
           <div className="text-center mt-12">
             <Button size="lg" variant="outline" asChild>
-              <Link to="/services">View All Services & Pricing</Link>
+              <Link to="/auth/signup-email">View All Features</Link>
             </Button>
           </div>
         </div>
@@ -411,14 +412,15 @@ export default function LandingPage() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button size="lg" className="text-lg px-8 py-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90" asChild>
-              <Link to="/book">
-                Book Your Mobile IV Now
+              <Link to="/auth/signup-email">
+                Start Your Free Trial
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <Phone className="mr-2 h-5 w-5" />
-              Call (704) IV-DRIPS
+            <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" asChild>
+              <Link to="/auth/signin">
+                Sign In
+              </Link>
             </Button>
           </div>
           

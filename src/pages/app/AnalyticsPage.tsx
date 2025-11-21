@@ -1,11 +1,17 @@
 import { AppSidebar } from "@/components/app-sidebar"
-import { ChartAreaInteractive } from "@/components/chart-area-interactive"
 import { SiteHeader } from "@/components/site-header"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar"
+import { BarChartComponent } from "@/components/charts/BarChartComponent"
+import { PieChartComponent } from "@/components/charts/PieChartComponent"
+import { LineChartComponent } from "@/components/charts/LineChartComponent"
+import { AreaChartComponent } from "@/components/charts/AreaChartComponent"
+import { Badge } from "@/components/ui/badge"
+import { IconTrendingUp, IconTrendingDown } from "@tabler/icons-react"
 
 export default function AnalyticsPage() {
   return (
@@ -18,46 +24,113 @@ export default function AnalyticsPage() {
       }
     >
       <AppSidebar variant="inset" />
-      <SidebarInset>
+      <SidebarInset className="bg-gradient-to-br from-secondary/20 via-background to-accent/10">
         <SiteHeader />
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">
             <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
-              <div className="mb-6">
-                <h1 className="text-3xl font-bold text-foreground mb-2">Analytics</h1>
-                <p className="text-muted-foreground">Track SOP usage and team performance</p>
+              
+              {/* Page Header */}
+              <div className="flex items-center justify-between mb-2">
+                <div>
+                  <h1 className="text-3xl font-bold text-foreground mb-2">Advanced Analytics</h1>
+                  <p className="text-muted-foreground">Comprehensive business intelligence and performance metrics</p>
+                </div>
+                <div className="flex gap-2">
+                  <Button variant="outline">Export Data</Button>
+                  <Button>Generate Report</Button>
+                </div>
               </div>
               
-              <div className="mb-8">
-                <ChartAreaInteractive />
+              {/* KPI Summary Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                <Card>
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">Avg. Order Value</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">$284</div>
+                    <Badge variant="outline" className="mt-2 text-chart-2 border-chart-2/30">
+                      <IconTrendingUp className="h-3 w-3 mr-1" />
+                      +12.3%
+                    </Badge>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">Customer Lifetime Value</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">$1,847</div>
+                    <Badge variant="outline" className="mt-2 text-chart-2 border-chart-2/30">
+                      <IconTrendingUp className="h-3 w-3 mr-1" />
+                      +8.7%
+                    </Badge>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">Churn Rate</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">2.3%</div>
+                    <Badge variant="outline" className="mt-2 text-destructive border-destructive/30">
+                      <IconTrendingDown className="h-3 w-3 mr-1" />
+                      +0.2%
+                    </Badge>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">ROI</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">287%</div>
+                    <Badge variant="outline" className="mt-2 text-chart-2 border-chart-2/30">
+                      <IconTrendingUp className="h-3 w-3 mr-1" />
+                      +23.1%
+                    </Badge>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Charts Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <BarChartComponent />
+                <PieChartComponent />
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <LineChartComponent />
+                <AreaChartComponent />
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Most Used SOPs</CardTitle>
+                    <CardTitle>Top Performing Regions</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="text-sm">Customer Service Protocol</span>
-                        <span className="font-bold text-chart-1">342 views</span>
+                        <span className="text-sm">North America</span>
+                        <span className="font-bold text-chart-1">$847K</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm">Safety Procedures</span>
-                        <span className="font-bold text-chart-1">287 views</span>
+                        <span className="text-sm">Europe</span>
+                        <span className="font-bold text-chart-2">$623K</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm">Onboarding Checklist</span>
-                        <span className="font-bold text-blue-600">156 views</span>
+                        <span className="text-sm">Asia Pacific</span>
+                        <span className="font-bold text-chart-3">$512K</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm">Quality Control</span>
-                        <span className="font-bold text-blue-600">134 views</span>
+                        <span className="text-sm">Latin America</span>
+                        <span className="font-bold text-chart-4">$289K</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm">Equipment Maintenance</span>
-                        <span className="font-bold text-blue-600">98 views</span>
+                        <span className="text-sm">Middle East</span>
+                        <span className="font-bold text-chart-5">$173K</span>
                       </div>
                     </div>
                   </CardContent>
@@ -65,29 +138,29 @@ export default function AnalyticsPage() {
                 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Team Performance</CardTitle>
+                    <CardTitle>Marketing Channel ROI</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
                       <div className="flex justify-between">
-                        <span className="text-sm">SOPs Created This Month</span>
-                        <span className="font-bold text-green-600">12</span>
+                        <span className="text-sm">Email Marketing</span>
+                        <span className="font-bold text-chart-2">342%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-sm">Average Review Time</span>
-                        <span className="font-bold text-orange-600">2.3 days</span>
+                        <span className="text-sm">Social Media</span>
+                        <span className="font-bold text-chart-2">287%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-sm">Active Contributors</span>
-                        <span className="font-bold text-blue-600">8</span>
+                        <span className="text-sm">Content Marketing</span>
+                        <span className="font-bold text-chart-2">234%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-sm">Completion Rate</span>
-                        <span className="font-bold text-green-600">94%</span>
+                        <span className="text-sm">Paid Search</span>
+                        <span className="font-bold text-chart-4">198%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-sm">Updates This Week</span>
-                        <span className="font-bold text-blue-600">23</span>
+                        <span className="text-sm">Display Ads</span>
+                        <span className="font-bold text-chart-4">156%</span>
                       </div>
                     </div>
                   </CardContent>
@@ -95,24 +168,29 @@ export default function AnalyticsPage() {
                 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Knowledge Gaps</CardTitle>
+                    <CardTitle>Customer Acquisition Cost</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-red-700">Critical Gaps</span>
-                        <span className="text-2xl font-bold text-red-700">3</span>
+                        <span className="text-sm">Organic Search</span>
+                        <span className="font-bold text-chart-2">$45</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-orange-700">Medium Gaps</span>
-                        <span className="text-2xl font-bold text-orange-700">7</span>
+                        <span className="text-sm">Social Media</span>
+                        <span className="font-bold text-chart-2">$67</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-yellow-700">Low Priority</span>
-                        <span className="text-2xl font-bold text-yellow-700">12</span>
+                        <span className="text-sm">Email Campaign</span>
+                        <span className="font-bold text-chart-4">$89</span>
                       </div>
-                      <div className="text-xs text-gray-500 mt-2">
-                        Missing SOPs for new processes identified through AI analysis
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm">Paid Search</span>
+                        <span className="font-bold text-chart-4">$124</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm">Display Ads</span>
+                        <span className="font-bold text-destructive">$178</span>
                       </div>
                     </div>
                   </CardContent>

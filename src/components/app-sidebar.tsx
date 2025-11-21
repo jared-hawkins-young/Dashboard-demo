@@ -2,7 +2,6 @@ import * as React from "react"
 import {
   IconDashboard,
   IconDatabase,
-  IconFileAi,
   IconHelp,
   IconFileText,
   IconReport,
@@ -26,36 +25,41 @@ import {
 
 const data = {
   user: {
-    name: "Erica Johnson",
-    email: "demo@sopzilla.com",
-    avatar: "/avatars/erica.jpg",
+    name: "Demo User",
+    email: "demo@bizdashboard.com",
+    avatar: "/avatars/demo.jpg",
   },
   navMain: [
     {
-      title: "Dashboard",
-      url: "/app/dashboard",
+      title: "Overview",
+      url: "/dashboard",
       icon: IconDashboard,
     },
     {
-      title: "Engine", 
-      url: "/app/engine",
-      icon: IconFileAi,
+      title: "Analytics", 
+      url: "/analytics",
+      icon: IconReport,
     },
     {
-      title: "Gaps",
-      url: "/app/gaps",
-      icon: IconReport,
+      title: "Reports",
+      url: "/reports",
+      icon: IconFileText,
+    },
+    {
+      title: "Data Tables",
+      url: "/data",
+      icon: IconDatabase,
     },
   ],
   navClouds: [],
   navSecondary: [
     {
-      title: "Account",
-      url: "/app/account",
+      title: "Settings",
+      url: "/settings",
       icon: IconSettings,
     },
     {
-      title: "Get Help",
+      title: "Help",
       url: "#",
       icon: IconHelp,
     },
@@ -65,18 +69,7 @@ const data = {
       icon: IconSearch,
     },
   ],
-  documents: [
-    {
-      name: "Upload",
-      url: "/app/upload",
-      icon: IconFileText,
-    },
-    {
-      name: "Knowledge Base",
-      url: "/app/knowledge-base",
-      icon: IconDatabase,
-    },
-  ],
+  documents: [],
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -89,11 +82,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5 hover:bg-white/10 text-white"
             >
-              <a href="/app/dashboard" className="flex items-center gap-2">
+              <a href="/dashboard" className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                  <IconFileText className="!size-4 text-white" />
+                  <IconDashboard className="!size-4 text-white" />
                 </div>
-                <span className="text-lg font-bold text-white">SOPzilla</span>
+                <span className="text-lg font-bold text-white">Biz Demo Dashboard</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>

@@ -11,7 +11,7 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4 bg-white/20"
         />
-        <h1 className="text-base font-semibold text-white">SOPzilla Dashboard</h1>
+        <h1 className="text-base font-semibold text-white">Biz Demo Dashboard</h1>
         <div className="ml-auto flex items-center gap-2">
           <Button variant="ghost" size="sm" className="text-white hover:text-white hover:bg-white/10">
             Help

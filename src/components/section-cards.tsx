@@ -1,7 +1,6 @@
-import { IconTrendingUp, IconAlertTriangle, IconUsers, IconFileText } from "@tabler/icons-react"
+import { IconTrendingUp, IconTrendingDown, IconUsers, IconShoppingCart, IconArrowUpRight } from "@tabler/icons-react"
 
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardAction,
@@ -14,131 +13,97 @@ import {
 export function SectionCards() {
   return (
     <>
-      {/* Welcome Header */}
-      <div className="px-4 lg:px-6">
-        <div className="mb-6">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Good morning, Erica</h1>
-          <p className="text-muted-foreground">Here's what's happening with your SOPs today.</p>
-        </div>
-        
-        {/* Hero Action Section */}
-        <Card className="mb-6 bg-gradient-to-r from-muted/30 to-accent/20 border-border">
-          <CardHeader>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <CardTitle className="text-xl mb-2">Ready to create your next SOP?</CardTitle>
-                <CardDescription className="text-muted-foreground mb-4">
-                  Last created: Customer Service Protocol - 2 days ago
-                </CardDescription>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button className="bg-primary hover:bg-primary/90">
-                  <IconFileText className="w-4 h-4 mr-2" />
-                  Create New SOP
-                </Button>
-                <Button variant="outline">
-                  Upload Recording
-                </Button>
-                <Button variant="outline">
-                  Import Document
-                </Button>
-              </div>
-            </div>
-          </CardHeader>
-        </Card>
-      </div>
-
-      {/* Quick Stats Grid */}
+      {/* Key Performance Indicators Grid */}
       <div className="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
         
         <Card className="@container/card">
           <CardHeader>
-            <CardDescription>Total SOPs</CardDescription>
+            <CardDescription>Total Revenue</CardDescription>
             <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-              12
-            </CardTitle>
-            <CardAction>
-              <Badge variant="outline">
-                <IconTrendingUp />
-                +3 this month
-              </Badge>
-            </CardAction>
-          </CardHeader>
-          <CardFooter className="flex-col items-start gap-1.5 text-sm">
-            <div className="line-clamp-1 flex gap-2 font-medium">
-              Growing documentation <IconTrendingUp className="size-4" />
-            </div>
-            <div className="text-muted-foreground">
-              Active SOPs across all departments
-            </div>
-          </CardFooter>
-        </Card>
-
-        <Card className="@container/card">
-          <CardHeader>
-            <CardDescription>Pending Review</CardDescription>
-            <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-              3
-            </CardTitle>
-            <CardAction>
-              <Badge variant="outline" className="text-chart-4 border-chart-4/30">
-                <IconAlertTriangle />
-                Needs attention
-              </Badge>
-            </CardAction>
-          </CardHeader>
-          <CardFooter className="flex-col items-start gap-1.5 text-sm">
-            <div className="line-clamp-1 flex gap-2 font-medium">
-              Awaiting approval <IconAlertTriangle className="size-4" />
-            </div>
-            <div className="text-muted-foreground">
-              Quality Control and HR documents
-            </div>
-          </CardFooter>
-        </Card>
-
-        <Card className="@container/card">
-          <CardHeader>
-            <CardDescription>Knowledge Gaps</CardDescription>
-            <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-              7
-            </CardTitle>
-            <CardAction>
-              <Badge variant="outline" className="text-destructive border-destructive/30">
-                <IconAlertTriangle />
-                Critical: 3
-              </Badge>
-            </CardAction>
-          </CardHeader>
-          <CardFooter className="flex-col items-start gap-1.5 text-sm">
-            <div className="line-clamp-1 flex gap-2 font-medium">
-              Gaps identified <IconAlertTriangle className="size-4" />
-            </div>
-            <div className="text-muted-foreground">
-              4 medium priority gaps detected
-            </div>
-          </CardFooter>
-        </Card>
-
-        <Card className="@container/card">
-          <CardHeader>
-            <CardDescription>Team Activity</CardDescription>
-            <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-              4
+              $4.83M
             </CardTitle>
             <CardAction>
               <Badge variant="outline" className="text-chart-2 border-chart-2/30">
-                <IconUsers />
-                This week
+                <IconTrendingUp />
+                +33.7%
               </Badge>
             </CardAction>
           </CardHeader>
           <CardFooter className="flex-col items-start gap-1.5 text-sm">
-            <div className="line-clamp-1 flex gap-2 font-medium">
-              Active collaboration <IconUsers className="size-4" />
+            <div className="line-clamp-1 flex gap-2 font-medium text-chart-2">
+              Strong YoY growth <IconTrendingUp className="size-4" />
             </div>
             <div className="text-muted-foreground">
-              Updates from team members
+              +$1.22M compared to last year
+            </div>
+          </CardFooter>
+        </Card>
+
+        <Card className="@container/card">
+          <CardHeader>
+            <CardDescription>Total Customers</CardDescription>
+            <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+              14,567
+            </CardTitle>
+            <CardAction>
+              <Badge variant="outline" className="text-chart-5 border-chart-5/30">
+                <IconTrendingDown />
+                -4.4%
+              </Badge>
+            </CardAction>
+          </CardHeader>
+          <CardFooter className="flex-col items-start gap-1.5 text-sm">
+            <div className="line-clamp-1 flex gap-2 font-medium text-muted-foreground">
+              Seasonal dip expected <IconUsers className="size-4" />
+            </div>
+            <div className="text-muted-foreground">
+              -667 from peak (typical Dec pattern)
+            </div>
+          </CardFooter>
+        </Card>
+
+        <Card className="@container/card">
+          <CardHeader>
+            <CardDescription>Total Orders</CardDescription>
+            <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+              9,629
+            </CardTitle>
+            <CardAction>
+              <Badge variant="outline" className="text-chart-1 border-chart-1/30">
+                <IconTrendingUp />
+                +30.5%
+              </Badge>
+            </CardAction>
+          </CardHeader>
+          <CardFooter className="flex-col items-start gap-1.5 text-sm">
+            <div className="line-clamp-1 flex gap-2 font-medium text-chart-1">
+              Record high performance <IconShoppingCart className="size-4" />
+            </div>
+            <div className="text-muted-foreground">
+              +2,249 orders vs last year
+            </div>
+          </CardFooter>
+        </Card>
+
+        <Card className="@container/card">
+          <CardHeader>
+            <CardDescription>Conversion Rate</CardDescription>
+            <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+              4.17%
+            </CardTitle>
+            <CardAction>
+              <Badge variant="outline" className="text-chart-2 border-chart-2/30">
+                <IconTrendingUp />
+                +0.93%
+              </Badge>
+            </CardAction>
+          </CardHeader>
+          <CardFooter className="flex-col items-start gap-1.5 text-sm">
+            <div className="line-clamp-1 flex gap-2 font-medium text-chart-2">
+              Improved conversion <IconArrowUpRight className="size-4" />
+            </div>
+            <div className="text-muted-foreground">
+              Well above industry average of 2.8%
             </div>
           </CardFooter>
         </Card>

@@ -31,30 +31,15 @@ export default function PublicLayout({ children }: PublicLayoutProps) {
             >
               Home
             </Link>
-            <Link 
-              to="/services" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Services
-            </Link>
-            <Link 
-              to="/about" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              About
-            </Link>
-            <Link 
-              to="/contact" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Contact
-            </Link>
           </nav>
 
           {/* CTA Button */}
           <div className="flex items-center space-x-4">
-            <Link to="/book">
-              <Button className="bg-primary hover:bg-primary/90">Book IV Today</Button>
+            <Link to="/auth/signin">
+              <Button variant="outline" className="mr-2">Sign In</Button>
+            </Link>
+            <Link to="/auth/signup-email">
+              <Button className="bg-primary hover:bg-primary/90">Get Started</Button>
             </Link>
           </div>
         </div>
@@ -85,31 +70,35 @@ export default function PublicLayout({ children }: PublicLayoutProps) {
               </p>
             </div>
 
-            {/* Services */}
+            {/* Product */}
             <div className="space-y-4">
-              <h4 className="font-medium">Services</h4>
+              <h4 className="font-medium">Product</h4>
               <div className="space-y-2">
-                <Link to="/services" className="block text-sm text-muted-foreground hover:text-foreground">
-                  All IV Therapies
+                <Link to="/" className="block text-sm text-muted-foreground hover:text-foreground">
+                  Features
                 </Link>
-                <a href="tel:+17044837477" className="block text-sm text-muted-foreground hover:text-foreground">
-                  (704) IV-DRIPS
-                </a>
-                <Link to="/book" className="block text-sm text-muted-foreground hover:text-foreground">
-                  Book Appointment
+                <Link to="/" className="block text-sm text-muted-foreground hover:text-foreground">
+                  Pricing
+                </Link>
+                <Link to="/auth/signin" className="block text-sm text-muted-foreground hover:text-foreground">
+                  Sign In
                 </Link>
               </div>
             </div>
 
-            {/* Service Areas */}
+            {/* Resources */}
             <div className="space-y-4">
-              <h4 className="font-medium">Service Areas</h4>
+              <h4 className="font-medium">Resources</h4>
               <div className="space-y-2">
-                <span className="block text-sm text-muted-foreground">Charlotte, NC</span>
-                <span className="block text-sm text-muted-foreground">Matthews</span>
-                <span className="block text-sm text-muted-foreground">Ballantyne</span>
-                <span className="block text-sm text-muted-foreground">SouthPark</span>
-                <span className="block text-sm text-muted-foreground">Uptown Charlotte</span>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="block text-sm text-muted-foreground hover:text-foreground">
+                  Documentation
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="block text-sm text-muted-foreground hover:text-foreground">
+                  Support
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="block text-sm text-muted-foreground hover:text-foreground">
+                  Community
+                </a>
               </div>
             </div>
 
@@ -117,17 +106,14 @@ export default function PublicLayout({ children }: PublicLayoutProps) {
             <div className="space-y-4">
               <h4 className="font-medium">Company</h4>
               <div className="space-y-2">
-                <Link to="/about" className="block text-sm text-muted-foreground hover:text-foreground">
+                <Link to="/" className="block text-sm text-muted-foreground hover:text-foreground">
                   About
                 </Link>
-                <Link to="/contact" className="block text-sm text-muted-foreground hover:text-foreground">
-                  Contact
+                <Link to="/" className="block text-sm text-muted-foreground hover:text-foreground">
+                  Privacy
                 </Link>
-                <Link to="/privacy" className="block text-sm text-muted-foreground hover:text-foreground">
-                  Privacy Policy
-                </Link>
-                <Link to="/terms" className="block text-sm text-muted-foreground hover:text-foreground">
-                  Terms of Service
+                <Link to="/" className="block text-sm text-muted-foreground hover:text-foreground">
+                  Terms
                 </Link>
               </div>
             </div>

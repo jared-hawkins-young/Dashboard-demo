@@ -1,18 +1,79 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables')
+// Create a mock Supabase client for demo purposes when env vars are missing
+const createMockSupabaseClient = (): any => {
+  console.warn('⚠️ Running in demo mode without Supabase. Auth features will be simulated.')
+  
+  return {
+    auth: {
+      getSession: async () => ({ data: { session: null }, error: null }),
+      onAuthStateChange: (_callback: any) => {
+        // Return a subscription object with unsubscribe method
+        return { 
+          data: { 
+            subscription: { 
+              unsubscribe: () => {} 
+            } 
+          } 
+        }
+      },
+      signInWithPassword: async ({ email, password: _password }: any) => {
+        console.log('Mock sign in with:', email)
+        return { 
+          data: { 
+            user: { id: 'demo-user', email }, 
+            session: { access_token: 'demo-token', user: { id: 'demo-user', email } } 
+          }, 
+          error: null 
+        }
+      },
+      signUp: async ({ email, password: _password, options: _options }: any) => {
+        console.log('Mock sign up with:', email)
+        return { 
+          data: { 
+            user: { id: 'demo-user', email }, 
+            session: { access_token: 'demo-token', user: { id: 'demo-user', email } } 
+          }, 
+          error: null 
+        }
+      },
+      signInWithOAuth: async ({ provider }: any) => {
+        console.log('Mock OAuth sign in with:', provider)
+        return { error: null }
+      },
+      signOut: async () => {
+        console.log('Mock sign out')
+        return { error: null }
+      },
+      resetPasswordForEmail: async (email: string) => {
+        console.log('Mock password reset for:', email)
+        return { error: null }
+      }
+    },
+    from: (_table: string) => ({
+      select: () => ({
+        eq: () => ({ data: [], error: null }),
+        single: () => ({ data: null, error: null })
+      }),
+      insert: () => ({ data: null, error: null }),
+      update: () => ({ data: null, error: null }),
+      delete: () => ({ data: null, error: null })
+    })
+  }
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: true,
-    autoRefreshToken: true,
-  },
-})
+// Use real Supabase client if env vars are provided, otherwise use mock
+export const supabase: SupabaseClient = (supabaseUrl && supabaseAnonKey)
+  ? createClient(supabaseUrl, supabaseAnonKey, {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+      },
+    })
+  : createMockSupabaseClient()
 
 export type Database = {
   public: {

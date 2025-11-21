@@ -182,14 +182,7 @@ export default function SignUpEmailPage() {
                     disabled={loading || isSigningUp}
                   />
                   <Label htmlFor="acceptTerms" className="text-sm text-muted-foreground">
-                    I agree to the{' '}
-                    <Link to="/terms" className="text-primary hover:underline">
-                      Terms of Service
-                    </Link>{' '}
-                    and{' '}
-                    <Link to="/privacy" className="text-primary hover:underline">
-                      Privacy Policy
-                    </Link>
+                    I agree to the Terms of Service and Privacy Policy
                   </Label>
                 </div>
                 

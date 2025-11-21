@@ -132,37 +132,64 @@ const chartConfig = {
   },
   desktop: {
     label: "Desktop",
-    color: "var(--primary)",
+    color: "#3b82f6", // Blue
   },
   mobile: {
     label: "Mobile",
-    color: "var(--primary)",
+    color: "#10b981", // Green
   },
 } satisfies ChartConfig
 
 export function ChartAreaInteractive() {
   const isMobile = useIsMobile()
-  const [timeRange, setTimeRange] = React.useState("90d")
+  const [timeRange, setTimeRange] = React.useState("year")
 
   React.useEffect(() => {
     if (isMobile) {
-      setTimeRange("7d")
+      setTimeRange("month")
     }
   }, [isMobile])
 
   const filteredData = chartData.filter((item) => {
     const date = new Date(item.date)
     const referenceDate = new Date("2024-06-30")
-    let daysToSubtract = 90
-    if (timeRange === "30d") {
-      daysToSubtract = 30
-    } else if (timeRange === "7d") {
+    let daysToSubtract = 365
+    if (timeRange === "week") {
       daysToSubtract = 7
+    } else if (timeRange === "month") {
+      daysToSubtract = 30
+    } else if (timeRange === "year") {
+      daysToSubtract = 365
+    } else if (timeRange === "3year") {
+      daysToSubtract = 1095
+    } else if (timeRange === "5year") {
+      daysToSubtract = 1825
+    } else if (timeRange === "all") {
+      daysToSubtract = 10000 // Show all data
     }
     const startDate = new Date(referenceDate)
     startDate.setDate(startDate.getDate() - daysToSubtract)
     return date >= startDate
   })
+
+  const getDescription = () => {
+    switch (timeRange) {
+      case "week":
+        return "Visitor trends for the last week"
+      case "month":
+        return "Visitor trends for the last month"
+      case "year":
+        return "Visitor trends for the last year"
+      case "3year":
+        return "Visitor trends over 3 years"
+      case "5year":
+        return "Visitor trends over 5 years"
+      case "all":
+        return "Complete visitor history"
+      default:
+        return "Visitor trends"
+    }
+  }
 
   return (
     <Card className="@container/card">
@@ -170,9 +197,9 @@ export function ChartAreaInteractive() {
         <CardTitle>Total Visitors</CardTitle>
         <CardDescription>
           <span className="hidden @[540px]/card:block">
-            Total for the last 3 months
+            {getDescription()}
           </span>
-          <span className="@[540px]/card:hidden">Last 3 months</span>
+          <span className="@[540px]/card:hidden">{timeRange === "week" ? "Week" : timeRange === "month" ? "Month" : timeRange === "year" ? "Year" : timeRange === "3year" ? "3 Years" : timeRange === "5year" ? "5 Years" : "All Time"}</span>
         </CardDescription>
         <CardAction>
           <ToggleGroup
@@ -182,9 +209,12 @@ export function ChartAreaInteractive() {
             variant="outline"
             className="hidden *:data-[slot=toggle-group-item]:!px-4 @[767px]/card:flex"
           >
-            <ToggleGroupItem value="90d">Last 3 months</ToggleGroupItem>
-            <ToggleGroupItem value="30d">Last 30 days</ToggleGroupItem>
-            <ToggleGroupItem value="7d">Last 7 days</ToggleGroupItem>
+            <ToggleGroupItem value="week">Week</ToggleGroupItem>
+            <ToggleGroupItem value="month">Month</ToggleGroupItem>
+            <ToggleGroupItem value="year">Year</ToggleGroupItem>
+            <ToggleGroupItem value="3year">3 Years</ToggleGroupItem>
+            <ToggleGroupItem value="5year">5 Years</ToggleGroupItem>
+            <ToggleGroupItem value="all">All Time</ToggleGroupItem>
           </ToggleGroup>
           <Select value={timeRange} onValueChange={setTimeRange}>
             <SelectTrigger
@@ -192,17 +222,26 @@ export function ChartAreaInteractive() {
               size="sm"
               aria-label="Select a value"
             >
-              <SelectValue placeholder="Last 3 months" />
+              <SelectValue placeholder="Year" />
             </SelectTrigger>
             <SelectContent className="rounded-xl">
-              <SelectItem value="90d" className="rounded-lg">
-                Last 3 months
+              <SelectItem value="week" className="rounded-lg">
+                Week
               </SelectItem>
-              <SelectItem value="30d" className="rounded-lg">
-                Last 30 days
+              <SelectItem value="month" className="rounded-lg">
+                Month
               </SelectItem>
-              <SelectItem value="7d" className="rounded-lg">
-                Last 7 days
+              <SelectItem value="year" className="rounded-lg">
+                Year
+              </SelectItem>
+              <SelectItem value="3year" className="rounded-lg">
+                3 Years
+              </SelectItem>
+              <SelectItem value="5year" className="rounded-lg">
+                5 Years
+              </SelectItem>
+              <SelectItem value="all" className="rounded-lg">
+                All Time
               </SelectItem>
             </SelectContent>
           </Select>
@@ -240,13 +279,15 @@ export function ChartAreaInteractive() {
                 />
               </linearGradient>
             </defs>
-            <CartesianGrid vertical={false} />
+            <CartesianGrid vertical={false} strokeDasharray="3 3" opacity={0.3} />
             <XAxis
               dataKey="date"
               tickLine={false}
-              axisLine={false}
+              axisLine={true}
               tickMargin={8}
               minTickGap={32}
+              stroke="hsl(var(--muted-foreground))"
+              tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
               tickFormatter={(value) => {
                 const date = new Date(value)
                 return date.toLocaleDateString("en-US", {
