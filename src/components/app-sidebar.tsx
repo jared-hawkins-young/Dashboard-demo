@@ -7,6 +7,7 @@ import {
   IconReport,
   IconSearch,
   IconSettings,
+  IconSparkles,
 } from "@tabler/icons-react"
 
 import { NavDocuments } from "@/components/nav-documents"
@@ -39,6 +40,11 @@ const data = {
       title: "Analytics", 
       url: "/analytics",
       icon: IconReport,
+    },
+    {
+      title: "AI Assistant",
+      url: "/ai-assistant",
+      icon: IconSparkles,
     },
     {
       title: "Reports",
