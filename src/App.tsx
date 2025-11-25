@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import DashboardPage from '@/pages/app/DashboardPage'
 import AnalyticsPage from '@/pages/app/AnalyticsPage'
 import AIAssistantPage from '@/pages/app/AIAssistantPage'
+import OpenItemsPage from '@/pages/app/OpenItemsPage'
 import SOPsPage from '@/pages/app/SOPsPage'
 import TemplatesPage from '@/pages/app/TemplatesPage'
 import AccountPage from '@/pages/app/AccountPage'
@@ -18,6 +19,7 @@ function App() {
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/analytics" element={<AnalyticsPage />} />
       <Route path="/ai-assistant" element={<AIAssistantPage />} />
+      <Route path="/open-items" element={<OpenItemsPage />} />
       <Route path="/reports" element={<SOPsPage />} />
       <Route path="/data" element={<TemplatesPage />} />
       <Route path="/settings" element={<AccountPage />} />
